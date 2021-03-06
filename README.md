@@ -1,2 +1,8 @@
 # ARTS
-1 Algorithm, 1 tech post Review, 1 Tip from work and Share all of these weekly.
+
+1 Algorithm, 1 tech post (in english) Review, 1 Tip from work and Share all of these with thoughts weekly.
+
+
+# Outline
+
+[arts-1](arts-1/README.md)
