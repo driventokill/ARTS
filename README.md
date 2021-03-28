@@ -5,4 +5,5 @@
 
 # Outline
 
-[arts-1](arts-1/README.md)
+* [arts-1](arts-1/README.md)
+* [arts-2](arts-2/README.md)
