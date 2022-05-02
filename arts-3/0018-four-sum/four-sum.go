@@ -9,39 +9,22 @@ func fourSum(nums []int, target int) [][]int {
 
 	sort.Ints(nums)
 
-	ret := make([][]int, 0)
-	var last int
-
-	for i := 0; i < len(nums)-3; i++ {
-		if nums[i] > target && nums[i] >= 0 {
-			break
-		}
-
-		if i > 0 && nums[i] == last {
-			continue
-		} else {
-			last = nums[i]
-		}
-
-		trips := threeSum(nums[i+1:], target-nums[i])
-
-		for _, trip := range trips {
-			ret = append(ret, append([]int{nums[i]}, trip...))
-		}
-	}
-
-	return ret
+	return nSum(nums, target, 4)
 }
 
-func threeSum(nums []int, target int) [][]int {
-	if len(nums) < 3 {
+func nSum(nums []int, target int, n int) [][]int {
+	if len(nums) < n {
 		return [][]int{}
 	}
 
+	if n == 2 {
+		return twoSum(nums, target)
+	}
+
 	ret := make([][]int, 0)
 	var last int
 
-	for i := 0; i < len(nums)-2; i++ {
+	for i := 0; i < len(nums)-(n-1); i++ {
 		if nums[i] > target && nums[i] >= 0 {
 			break
 		}
@@ -52,10 +35,10 @@ func threeSum(nums []int, target int) [][]int {
 			last = nums[i]
 		}
 
-		pairs := twoSum(nums[i+1:], target-nums[i])
+		nRet := nSum(nums[i+1:], target-nums[i], n-1)
 
-		for _, pair := range pairs {
-			ret = append(ret, append([]int{nums[i]}, pair...))
+		for _, nR := range nRet {
+			ret = append(ret, append([]int{nums[i]}, nR...))
 		}
 	}
 
